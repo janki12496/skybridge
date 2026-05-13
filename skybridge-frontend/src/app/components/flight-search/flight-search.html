@@ -1,0 +1,30 @@
+<div class="search-container">
+  <h2>Search Flights</h2>
+
+  <div class="search-form">
+    <mat-form-field appearance="outline">
+      <mat-label>From</mat-label>
+      <input matInput [formControl]="originControl" placeholder="e.g. Toronto">
+      <mat-icon matSuffix>flight_takeoff</mat-icon>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>To</mat-label>
+      <input matInput [formControl]="destinationControl" placeholder="e.g. Vancouver">
+      <mat-icon matSuffix>flight_land</mat-icon>
+    </mat-form-field>
+
+    <button mat-raised-button color="primary" (click)="onSearch()">
+      <mat-icon>search</mat-icon>
+      Search Flights
+    </button>
+  </div>
+
+  <mat-spinner *ngIf="loading$ | async"></mat-spinner>
+
+  <div class="error" *ngIf="error$ | async as error">
+    {{ error }}
+  </div>
+
+  <app-flight-list [flights]="flights$ | async"></app-flight-list>
+</div>

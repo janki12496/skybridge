@@ -1,0 +1,37 @@
+<mat-card class="flight-card">
+  <mat-card-header>
+    <mat-card-title>
+      <mat-icon>flight</mat-icon>
+      {{ flight.flightNumber }}
+    </mat-card-title>
+    <mat-card-subtitle>
+      {{ flight.origin }} → {{ flight.destination }}
+    </mat-card-subtitle>
+  </mat-card-header>
+
+  <mat-card-content>
+    <div class="flight-details">
+      <div class="detail">
+        <mat-icon>schedule</mat-icon>
+        <span>{{ flight.departureTime }} - {{ flight.arrivalTime }}</span>
+      </div>
+      <div class="detail">
+        <mat-icon>attach_money</mat-icon>
+        <span>{{ flight.price | currency }}</span>
+      </div>
+      <div class="detail">
+        <mat-chip [color]="getStatusColor()" selected>
+          {{ flight.status }}
+        </mat-chip>
+      </div>
+    </div>
+  </mat-card-content>
+
+  <mat-card-actions>
+    <ng-container *ngIf="favourites$ | async as favourites">
+      <button mat-icon-button (click)="toggleFavourite(favourites)">
+        <mat-icon>{{ isFavourite(favourites) ? 'favorite' : 'favorite_border' }}</mat-icon>
+      </button>
+    </ng-container>
+  </mat-card-actions>
+</mat-card>

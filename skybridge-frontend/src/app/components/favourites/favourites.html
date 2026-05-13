@@ -1,0 +1,15 @@
+<div class="favourites-container">
+  <h2>
+    <mat-icon>favorite</mat-icon>
+    My Favourite Flights
+  </h2>
+
+  <ng-container *ngIf="favourites$ | async as favourites">
+    <div *ngIf="favourites.length === 0" class="no-favourites">
+      <mat-icon>flight</mat-icon>
+      <p>No favourite flights yet. Search and add some!</p>
+    </div>
+
+    <app-flight-list [flights]="favourites"></app-flight-list>
+  </ng-container>
+</div>

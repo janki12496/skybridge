@@ -1,0 +1,11 @@
+.flight-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.no-flights {
+  text-align: center;
+  padding: 2rem;
+  color: #666;
+}
