@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./skybridge-backend
+    container_name: skybridge-backend
+    ports:
+      - "8080:8080"
+    networks:
+      - skybridge-network
+
+  frontend:
+    build: ./skybridge-frontend
+    container_name: skybridge-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    networks:
+      - skybridge-network
+
+networks:
+  skybridge-network:
+    driver: bridge
