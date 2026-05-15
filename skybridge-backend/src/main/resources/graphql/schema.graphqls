@@ -1,0 +1,17 @@
+type Query {
+    flights: [Flight]
+    flightById(id: ID!): Flight
+    flightsByStatus(status: String!): [Flight]
+    searchFlights(origin: String!, destination: String!): [Flight]
+}
+
+type Flight {
+    id: ID
+    flightNumber: String
+    origin: String
+    destination: String
+    departureTime: String
+    arrivalTime: String
+    status: String
+    price: Float
+}
