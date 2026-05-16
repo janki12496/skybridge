@@ -8,7 +8,9 @@ import { Flight } from '../models/flight';
   providedIn: 'root',
 })
 export class FlightService {
-  private apiUrl = 'http://localhost:8080/api/flights';
+ private apiUrl = window.location.hostname === 'localhost' 
+  ? 'http://localhost:8080/api/flights'
+  : 'http://backend:8080/api/flights';
 
   constructor(private http: HttpClient) {}
 

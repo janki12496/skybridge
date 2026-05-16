@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: skybridge-frontend
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: skybridge-frontend
+  template:
+    metadata:
+      labels:
+        app: skybridge-frontend
+    spec:
+      containers:
+        - name: skybridge-frontend
+          image: skybridge-frontend:latest
+          ports:
+            - containerPort: 80
